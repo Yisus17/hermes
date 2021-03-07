@@ -19,10 +19,10 @@ class SoloUser
     {
         switch (auth::user()->type) {
             case ('1'):
-                return redirect('admin');
+                return redirect('home');
                 break;
             case ('2'):
-                return redirect('moderator');
+                return redirect('home-moderator');
                 break;
             case ('3'):
                 return $next($request);
