@@ -1,0 +1,14 @@
+MYSQL local:
+	user: hermes_local
+	password: hermes_local
+	bd: hermes_app
+
+comandos: 
+	composer global require laravel/installer
+	composer require laravel/ui
+	php artisan ui vue --auth
+	npm install
+	npm update
+	npm run watch (para desarrollo)
+	.browserSync('http://hermes.local/')-->meter esto en el webpackmix para desarrollo
+	php artisan migrate:fresh --seed -->para meter migrar los seeds

@@ -1,0 +1,7 @@
+Hermes:
+    Productos: CRUD (id, nombre, descripcion,categoria_id, stock, precio unitario)
+    AgendaContactos: CRUD (Razon social, Direccion, Pais, Estado, Telefono, correo, nombre, apellido)
+    Presupuesto: CRUD+excel o pdf (fecha, contacto, validez, cliente, condiciones de pago, metodo de pago, subtotal, iva, total, productos*cantidad)
+    Facturas: CRUD+excel o pdf (fecha, contacto, validez, cliente, condiciones de pago, metodo de pago, subtotal, iva, total, productos*cantidad)
+    Admin: Configuración de la empresa: logo, nombre, usuarios
+    SuperAdmin: CRUD de empresas
