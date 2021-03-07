@@ -65,5 +65,6 @@ class Kernel extends HttpKernel
         'soloadmin' => \App\Http\Middleware\SoloAdmin::class,
         'solomoderator' => \App\Http\Middleware\SoloModerator::class,
         'solouser' => \App\Http\Middleware\SoloUser::class,
+        'registeronlybyadmin' => \App\Http\Middleware\RegisterOnlyByAdmin::class,
     ];
 }
