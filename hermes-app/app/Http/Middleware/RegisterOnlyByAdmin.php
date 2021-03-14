@@ -26,7 +26,7 @@ class RegisterOnlyByAdmin
                 return redirect('home-moderator')->with('ERROR', self::NOT_REGISTRATION_ALLOWED);  
                 break;
             case ('3'):
-                return redirect('home-user')->with('ERROR', self::NOT_REGISTRATION_ALLOWED); 
+                return redirect('home-simple-user')->with('ERROR', self::NOT_REGISTRATION_ALLOWED); 
                 break;
         }
     }

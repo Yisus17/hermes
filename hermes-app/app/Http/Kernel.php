@@ -64,7 +64,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'soloadmin' => \App\Http\Middleware\SoloAdmin::class,
         'solomoderator' => \App\Http\Middleware\SoloModerator::class,
-        'solouser' => \App\Http\Middleware\SoloUser::class,
+        'solosimpleuser' => \App\Http\Middleware\SoloSimpleUser::class,
         'registeronlybyadmin' => \App\Http\Middleware\RegisterOnlyByAdmin::class,
     ];
 }

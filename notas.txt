@@ -12,3 +12,8 @@ comandos:
 	npm run watch (para desarrollo)
 	.browserSync('http://hermes.local/')-->meter esto en el webpackmix para desarrollo
 	php artisan migrate:fresh --seed -->para meter migrar los seeds
+
+
+Pendientes:
+	Meter el resto de atributos en el formulario edit de usuario
+	hacer logging (usar trazas de mensajes como en los partials)

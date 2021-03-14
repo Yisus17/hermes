@@ -24,7 +24,7 @@ class SoloAdmin
                 return redirect('home-moderator');
                 break;
             case ('3'):
-                return redirect('home-user');
+                return redirect('home-simple-user');
                 break;
         }
     }

@@ -3,23 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Models\User;
+use App\Http\Middleware\SoloSimpleUser;
 
-class UserController extends Controller
+class SimpleUserController extends Controller
 {
-    private $USER_TYPE_ADMIN = "1";
-    private $USER_TYPE_MODERATOR = "2";
-    private $USER_TYPE_SIMPLE_USER = "3";
-
     /**
      * Create a new controller instance.
      *
      * @return void
      */
     public function __construct()
-    {
+    { 
         $this->middleware('auth');
+        $this->middleware('solosimpleuser', ['only' =>['index']]);
     }
 
     /**
@@ -29,20 +25,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = null;
-        switch (auth::user()->type) {
-            case ($this->USER_TYPE_ADMIN):
-                $users = User::all();
-
-                return view('users.list', compact('users'));
-
-            case ($this->USER_TYPE_MODERATOR):
-                $users = User::where('type', $this->USER_TYPE_MODERATOR)->get();
-                return $users;
-
-            case ($this->USER_TYPE_SIMPLE_USER):
-                return redirect('home-simple-user');
-        }
+        return view('home-simple-user');
     }
 
     /**
@@ -74,8 +57,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::findOrFail($id);
-        return view('users.show', compact('user'));
+        //
     }
 
     /**
@@ -86,8 +68,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::findOrFail($id);
-        return view('users.edit', compact('user'));
+        //
     }
 
     /**
@@ -99,16 +80,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        $user = User::findOrFail($id);
-        $user->name = $request->name;
-    
-        //TODO: Meter el resto de atributos a editar, cambiar el form
-
-        $user->save();
-        $message = $id == null ? 'CREATED' : 'UPDATED';
-
-        return redirect('users')->with('message', $message);
+        //
     }
 
     /**
@@ -119,8 +91,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $userToDelete = User::findOrFail($id);
-        $userToDelete->delete();
-        return redirect('users')->with('message', 'User successfully deleted');
+        //
     }
 }

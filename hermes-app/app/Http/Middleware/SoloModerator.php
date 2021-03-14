@@ -25,7 +25,7 @@ class SoloModerator
                 return $next($request);
                 break;
             case ('3'):
-                return redirect('home-user');
+                return redirect('home-simple-user');
                 break;
         }
     }

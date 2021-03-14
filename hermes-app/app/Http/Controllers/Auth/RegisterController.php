@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -39,7 +41,7 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('registeronlybyadmin'); 
+        $this->middleware('registeronlybyadmin');
     }
 
     /**
@@ -71,5 +73,19 @@ class RegisterController extends Controller
             'type' => $data['type'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    //Override del default register para no logearnos con el nuevo usuario registrado
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        //Comentando este guard, al registrar un nuevo usuario no nos logeamos con el
+        //$this->guard()->login($user);
+
+        return $this->registered($request, $user)
+            ?: redirect($this->redirectPath());
     }
 }

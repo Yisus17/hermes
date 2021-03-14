@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class SoloUser
+class SoloSimpleUser
 {
     /**
      * Handle an incoming request.
