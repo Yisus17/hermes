@@ -18,9 +18,9 @@
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                 @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
@@ -32,9 +32,9 @@
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
@@ -44,13 +44,39 @@
                             <label for="type" class="col-md-4 col-form-label text-md-right">{{ __('Type') }}</label>
 
                             <div class="col-md-6">
-                                <input id="type" type="text" class="form-control @error('type') is-invalid @enderror" name="type" value="{{ old('type') }}" required autocomplete="type">
+                                <select name="type" id="type" class="form-control">
+                                    <option value="1">Admin</option>
+                                    <option value="2">Moderator</option>
+                                    <option value="3" selected>Simple User</option>
+                                </select>
 
-                                @error('type')
+                                <!-- @error('type')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
+                                @enderror -->
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label for="company_id" class="col-md-4 col-form-label text-md-right">{{ __('Company') }}</label>
+
+                            <div class="col-md-6">
+                                <select name="company_id" id="company_id" class="form-control">
+                                    <option value="" selected disabled>--Select--</option>
+                                    @foreach($companies as $company)
+                                    <option value="{{ $company->id }}">
+                                        {{ $company->name }}
+                                    </option>
+                                    @endforeach
+                                </select>
+
+                                <!-- @error('type')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror -->
                             </div>
                         </div>
 
@@ -61,9 +87,9 @@
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                 @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>

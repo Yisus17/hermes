@@ -26,7 +26,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <span>Users list</span>
-                    <a href="{{ route('register') }}" class="btn btn-primary btn-sm">Register User</a>
+                    <a href="{{ route('register') }}" class="btn btn-primary btn-sm">Add User</a>
 
                 </div>
 
@@ -40,6 +40,7 @@
                                         <th scope="col">Name</th>
                                         <th scope="col">Email</th>
                                         <th scope="col">Type</th>
+                                        <th scope="col">Company</th>
                                         <th scope="col">Actions</th>
                                     </tr>
                                 </thead>
@@ -67,6 +68,8 @@
                                             <td>{{ $item->type }}</td>
                                         </span>
                                         @endswitch
+                                        
+                                        <td>{{ $item->company->name }}</td>
 
                                         <td id="actions_td">
                                             <form action="{{ route('users.destroy',$item->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro que deseas eliminar a este usuario?');">

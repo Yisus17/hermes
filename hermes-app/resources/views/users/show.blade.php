@@ -34,6 +34,10 @@
                                 <td>{{$user->email}}</td>
 							</tr>
                             <tr>
+                                <th>Company</th>
+                                <td>{{$user->company->name }} ({{ $user->company->id}})</td>
+							</tr>
+                            <tr>
                                 <th>Type</th>
                                 @switch($user->type)
                                 @case(1)

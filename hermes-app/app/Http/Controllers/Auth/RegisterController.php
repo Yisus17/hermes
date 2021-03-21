@@ -71,6 +71,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'type' => $data['type'],
+            'company_id' => $data['company_id'],
             'password' => Hash::make($data['password']),
         ]);
     }
@@ -79,7 +80,6 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $this->validator($request->all())->validate();
-
         event(new Registered($user = $this->create($request->all())));
 
         //Comentando este guard, al registrar un nuevo usuario no nos logeamos con el

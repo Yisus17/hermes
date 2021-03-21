@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -33,12 +34,11 @@ class UserController extends Controller
         switch (auth::user()->type) {
             case ($this->USER_TYPE_ADMIN):
                 $users = User::all();
-
                 return view('users.list', compact('users'));
 
             case ($this->USER_TYPE_MODERATOR):
                 $users = User::where('type', $this->USER_TYPE_MODERATOR)->get();
-                return $users;
+                return view('users.list', compact('users'));
 
             case ($this->USER_TYPE_SIMPLE_USER):
                 return redirect('home-simple-user');
@@ -87,7 +87,9 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        return view('users.edit', compact('user'));
+        $companies = Company::all();
+
+        return view('users.edit', compact('user', 'companies'));
     }
 
     /**
@@ -99,11 +101,10 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $user = User::findOrFail($id);
-        $user->name = $request->name;
     
-        //TODO: Meter el resto de atributos a editar, cambiar el form
+        $user->update($request->all());
+        $user->company_id = $request->company_id;
 
         $user->save();
         $message = $id == null ? 'CREATED' : 'UPDATED';
