@@ -1,0 +1,33 @@
+Backlog:
+    Diseño BDD
+    Mock-ups
+    Definir requerimientos con Mercy
+    Modulo de empresa:
+        Admin: CRUD de empresas
+        Moderador: Config de empresa
+        Usuario simple: N/A
+    Modulo de facturas:
+        Moderador / Usuario simple: CRUD de facturas
+        Export excel y PDF
+    Modulo de presupuestos:
+        Moderador / Usuario simple: CRUD de presupuestos
+        Export excel y PDF
+    Modulo de inventario:
+        Productos, categorias, stock
+        Import de productos //REVISAR
+    Módulo de contactos:
+        Moderador / Usuario simple: CRUD de contactos
+
+    Módulo de E/S: /******REVISAR******/
+        Moderador / Usuario simple: CRUD de ventas
+SPRINT:
+
+On Progress:
+    Modulo de Usuarios:
+            Admin: CRUD de usuarios (general) ->DONE
+            Moderador: CRUD de usuarios de empresa propia
+            Usuario simple: Config individual
+
+QA:
+
+DONE:

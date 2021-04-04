@@ -6,14 +6,35 @@ MYSQL local:
 comandos: 
 	composer global require laravel/installer
 	composer require laravel/ui
+	composer require laravelcollective/html
+
 	php artisan ui vue --auth
 	npm install
 	npm update
 	npm run watch (para desarrollo)
 	.browserSync('http://hermes.local/')-->meter esto en el webpackmix para desarrollo
 	php artisan migrate:fresh --seed -->para meter migrar los seeds
+	
+	LIMPIAR CACHES DE LARAVEL
+	
+	php artisan cache:clear
+	php artisan route:clear
+	php artisan config:clear
+	php artisan view:clear
 
 
-Pendientes:
-	Meter el resto de atributos en el formulario edit de usuario
+
+
+Pendientes:	
+	Completar datos de compañias
+	CRUD DE COMPAÑIA para usuarios moderadores
+	Cargas de logos:
+		ver donde guardarlas
+		hacer bien el routing del storage
+		buscar algun bucket
 	hacer logging (usar trazas de mensajes como en los partials)
+	pasar cosas a partials (mensajes de error o formularios, REFACTOR OPCIONAL)
+	
+Hecho:
+	Meter el resto de atributos en el formulario edit de usuario-->hecho
+	Gestion de compañias (principal)
