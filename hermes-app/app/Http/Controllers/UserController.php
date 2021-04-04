@@ -38,7 +38,7 @@ class UserController extends Controller
                 return view('users.list', compact('users'));
 
             case ($this->USER_TYPE_MODERATOR):
-                $users = User::where('type', $this->USER_TYPE_MODERATOR)->get();
+                $users = User::where('role_id', $this->USER_TYPE_MODERATOR)->get();
                 return view('users.list', compact('users'));
 
             case ($this->USER_TYPE_SIMPLE_USER):
