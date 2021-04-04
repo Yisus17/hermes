@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
-use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
-class UserController extends Controller
+class CompanyController extends Controller
 {
     private $USER_TYPE_ADMIN = "1";
     private $USER_TYPE_MODERATOR = "2";
@@ -21,6 +20,7 @@ class UserController extends Controller
      */
     public function __construct()
     {
+
         $this->middleware('auth');
     }
 
@@ -31,16 +31,15 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = null;
+        $companies = null;
+
         switch (auth::user()->role_id) {
             case ($this->USER_TYPE_ADMIN):
-                $users = User::all();
-                return view('users.list', compact('users'));
+                $companies = Company::all();
+                return view('companies.list', compact('companies'));
 
             case ($this->USER_TYPE_MODERATOR):
-                $users = User::where('role_id', $this->USER_TYPE_MODERATOR)->get();
-                return $users;
-                return view('users.list', compact('users'));
+                return redirect('home-moderator');
 
             case ($this->USER_TYPE_SIMPLE_USER):
                 return redirect('home-simple-user');
@@ -54,7 +53,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('companies.create');
     }
 
     /**
@@ -65,7 +64,16 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $company = new Company($request->all());
+        $company->logo = 'logo.png';
+
+        $company->save();
+
+        //$message = $id == null ? 'Contacto creado exitosamente' : 'Contacto editado exitosamente';
+
+        $message = 'Emprendedor creado exitosamente';
+
+        return redirect('companies')->with('message', $message);
     }
 
     /**
@@ -76,8 +84,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::findOrFail($id);
-        return view('users.show', compact('user'));
+        $company = Company::findOrFail($id);
+        return view('companies.show', compact('company'));
     }
 
     /**
@@ -88,11 +96,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::findOrFail($id);
-        $companies = Company::all();
-        $roles = Role::all();
-
-        return view('users.edit', compact('user', 'companies', 'roles'));
+        $company = Company::findOrFail($id);
+        return view('companies.edit', compact('company'));
     }
 
     /**
@@ -104,18 +109,14 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::findOrFail($id);
+        $company = Company::findOrFail($id);
+        $company->update($request->all());
 
-       
-    
-        $user->update($request->all());
-        $user->company_id = $request->company_id;
-        $user->role_id = $request->role_id;
+        $company->save();
 
-        $user->save();
-        $message = $id == null ? 'CREATED' : 'UPDATED';
+        $message = 'Emprendedor actualizado exitosamente';
 
-        return redirect('users')->with('message', $message);
+        return redirect('companies')->with('message', $message);
     }
 
     /**
@@ -126,8 +127,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $userToDelete = User::findOrFail($id);
-        $userToDelete->delete();
-        return redirect('users')->with('message', 'User successfully deleted');
+        $companyToDelete = Company::findOrFail($id);
+		$companyToDelete->delete();
+		return redirect('companies')->with('message', 'Emprededor eliminado exitosamente');
     }
 }

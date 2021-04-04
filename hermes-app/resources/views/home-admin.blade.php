@@ -16,21 +16,21 @@
 
                         <div class="card-body">
                             <h5 class="card-title">Usuarios</h5>
-                            <p class="card-text">En esta secci髇 podr醩 gestionar los datos de tus contactos.</p>
+                            <p class="card-text">Administraci贸n de usuarios</p>
                         </div>
                     </a>
                 </div>
 
                 <!-- PRODUCTS -->
                 <div class="card">
-                    <a href="{{ url('/products') }}">
+                    <a href="{{ url('/companies') }}">
                         <div class="image-dashboard-card yellow">
-                            <i class="fas fa-headphones-alt"></i>
+                            <i class="fas fa-building"></i>
                         </div>
 
                         <div class="card-body">
                             <h5 class="card-title">Emprendimientos</h5>
-                            <p class="card-text">En esta secci髇 podr醩 gestionar los productos de tu inventario.</p>
+                            <p class="card-text">Gesti贸n de compa帽ias de los emprendedores</p>
                         </div>
                     </a>
                 </div>
@@ -44,7 +44,7 @@
 
                         <div class="card-body">
                             <h5 class="card-title">Presupuestos</h5>
-                            <p class="card-text">En esta secci髇 podr醩 crear, editar y descargar tus presupuestos.</p>
+                            <p class="card-text">En esta secci贸n podr谩s crear, editar y descargar tus presupuestos.</p>
                         </div>
                     </a>
                 </div>
@@ -58,7 +58,7 @@
 
                         <div class="card-body">
                             <h5 class="card-title">Facturas</h5>
-                            <p class="card-text">En esta secci髇 podr醩 crear, editar y descargar tus facturas.</p>
+                            <p class="card-text">En esta secci贸n podr谩s crear, editar y descargar tus facturas.</p>
                         </div>
                     </a>
                 </div>

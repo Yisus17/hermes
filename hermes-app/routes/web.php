@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -21,9 +22,7 @@ Route::resource('/home-simple-user', SimpleUserController::class);
 
 //Usuarios
 Route::resource('/users', UserController::class);
-Route::resource('/users/{id}', UserController::class);
 
-
-
-
+//Companies
+Route::resource('/companies', CompanyController::class);
 

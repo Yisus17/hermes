@@ -13,9 +13,6 @@
                 <div class="card-body">
                     <table class="table table-bordered">
                         <tbody>
-                           
-
-
                             <tr>
                                 <th>ID</th>
                                 <td>{{$user->id}}</td>
