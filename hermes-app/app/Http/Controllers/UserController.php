@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -31,7 +32,7 @@ class UserController extends Controller
     public function index()
     {
         $users = null;
-        switch (auth::user()->type) {
+        switch (auth::user()->role_id) {
             case ($this->USER_TYPE_ADMIN):
                 $users = User::all();
                 return view('users.list', compact('users'));
@@ -88,8 +89,9 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $companies = Company::all();
+        $roles = Role::all();
 
-        return view('users.edit', compact('user', 'companies'));
+        return view('users.edit', compact('user', 'companies', 'roles'));
     }
 
     /**
@@ -102,9 +104,12 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
+
+       
     
         $user->update($request->all());
         $user->company_id = $request->company_id;
+        $user->role_id = $request->role_id;
 
         $user->save();
         $message = $id == null ? 'CREATED' : 'UPDATED';

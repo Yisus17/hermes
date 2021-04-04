@@ -18,7 +18,7 @@ class RegisterOnlyByAdmin
      * @return mixed
      */
     public function handle(Request $request, Closure $next){
-        switch (auth::user()->type) {
+        switch (auth::user()->role_id) {
             case ('1'):
                 return $next($request);
                 break;

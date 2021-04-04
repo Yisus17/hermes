@@ -38,8 +38,8 @@
                                 <td>{{$user->company->name }} ({{ $user->company->id}})</td>
 							</tr>
                             <tr>
-                                <th>Type</th>
-                                @switch($user->type)
+                                <th>Role</th>
+                                @switch($user->role->id)
                                 @case(1)
                                 <td>Admin</td>
                                 @break
@@ -54,7 +54,7 @@
 
                                 @default
                                 <span>
-                                    <td>{{ $user->type }}</td>
+                                    <td>{{ $user->role->id }}</td>
                                 </span>
                                 @endswitch
 							</tr>

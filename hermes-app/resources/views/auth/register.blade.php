@@ -41,10 +41,10 @@
 
 
                         <div class="form-group row">
-                            <label for="type" class="col-md-4 col-form-label text-md-right">{{ __('Type') }}</label>
+                            <label for="type" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
 
                             <div class="col-md-6">
-                                <select name="type" id="type" class="form-control">
+                                <select name="role_id" id="role_id" class="form-control">
                                     <option value="1">Admin</option>
                                     <option value="2">Moderator</option>
                                     <option value="3" selected>Simple User</option>

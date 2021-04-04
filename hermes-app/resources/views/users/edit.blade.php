@@ -45,16 +45,20 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="type" class="col-md-4 col-form-label text-md-right">{{ __('Type') }}</label>
+                            <label for="role_id" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
 
                             <div class="col-md-6">
-                                <select name="type" id="type" class="form-control">
-                                    <option value="1">Admin</option>
-                                    <option value="2">Moderator</option>
-                                    <option value="3" selected>Simple User</option>
+                                <select name="role_id" id="role_id" class="form-control">
+                                    <option value="" selected disabled>--Select--</option>
+                                    @foreach($roles as $role)
+                                    <option value="{{ $role->id }}" {{ (isset($user) && $role->id == $user->role_id) 
+                                        || old('role_id') == $role->id ? 'selected' : '' }}>
+                                        {{ $role->name }}
+                                    </option>
+                                    @endforeach
                                 </select>
 
-                                @error('type')
+                                @error('role')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -69,8 +73,7 @@
                                 <select name="company_id" class="form-control selectpicker" data-live-search="true" required>
                                     <option value="" selected disabled>--Select--</option>
                                     @foreach($companies as $company)
-                                    <option value="{{ $company->id }}" 
-                                        {{ (isset($user) && $company->id == $user->company_id) 
+                                    <option value="{{ $company->id }}" {{ (isset($user) && $company->id == $user->company_id) 
                                         || old('company_id') == $company->id ? 'selected' : '' }}>
                                         {{ $company->name }}
                                     </option>

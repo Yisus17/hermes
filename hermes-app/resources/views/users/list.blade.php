@@ -39,7 +39,7 @@
                                         <th scope="col">id</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Email</th>
-                                        <th scope="col">Type</th>
+                                        <th scope="col">Role</th>
                                         <th scope="col">Company</th>
                                         <th scope="col">Actions</th>
                                     </tr>
@@ -50,7 +50,7 @@
                                         <th scope="row">{{ $item->id }}</th>
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->email }}</td>
-                                        @switch($item->type)
+                                        @switch($item->role_id)
                                         @case(1)
                                         <td>Admin</td>
                                         @break
@@ -65,7 +65,7 @@
 
                                         @default
                                         <span>
-                                            <td>{{ $item->type }}</td>
+                                            <td>{{ $item->role_id }}</td>
                                         </span>
                                         @endswitch
                                         
