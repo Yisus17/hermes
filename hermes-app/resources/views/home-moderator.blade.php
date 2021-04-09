@@ -15,8 +15,8 @@
                         </div>
 
                         <div class="card-body">
-                            <h5 class="card-title">Users</h5>
-                            <p class="card-text">En esta secci髇 podr醩 gestionar los datos de tus contactos.</p>
+                            <h5 class="card-title">Usuarios</h5>
+                            <p class="card-text">Gesti贸n de usuarios de tu emprendimiento</p>
                         </div>
                     </a>
                 </div>
@@ -30,7 +30,7 @@
 
                         <div class="card-body">
                             <h5 class="card-title">Productos</h5>
-                            <p class="card-text">En esta secci髇 podr醩 gestionar los productos de tu inventario.</p>
+                            <p class="card-text">En esta secci贸n podr谩s gestionar los productos de tu inventario.</p>
                         </div>
                     </a>
                 </div>
@@ -44,7 +44,7 @@
 
                         <div class="card-body">
                             <h5 class="card-title">Presupuestos</h5>
-                            <p class="card-text">En esta secci髇 podr醩 crear, editar y descargar tus presupuestos.</p>
+                            <p class="card-text">En esta secci贸n podr谩s crear, editar y descargar tus presupuestos.</p>
                         </div>
                     </a>
                 </div>
@@ -58,7 +58,7 @@
 
                         <div class="card-body">
                             <h5 class="card-title">Facturas</h5>
-                            <p class="card-text">En esta secci髇 podr醩 crear, editar y descargar tus facturas.</p>
+                            <p class="card-text">En esta secci贸n podr谩s crear, editar y descargar tus facturas.</p>
                         </div>
                     </a>
                 </div>

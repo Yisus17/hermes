@@ -26,3 +26,4 @@ Route::resource('/users', UserController::class);
 //Companies
 Route::resource('/companies', CompanyController::class);
 
+Route::get('/about', [HomeController::class, 'about']);

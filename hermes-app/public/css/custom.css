@@ -144,6 +144,8 @@ textarea{
   font-size: 70px;
   text-align: center;
   color: #ffffff;
+  height: 9rem;
+  padding-top: 1rem;
 }
 
 .image-dashboard-card.cyan{

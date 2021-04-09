@@ -35,40 +35,27 @@
                     </a>
                 </div>
 
-                <!-- BUDGETS -->
+                <!-- About -->
                 <div class="card">
-                    <a href="{{ url('/budgets') }}">
+                    <a href="{{ url('/about') }}">
                         <div class="image-dashboard-card red">
-                            <i class="fas fa-hand-holding-usd"></i>
+                            <i class="fas fa-address-card"></i>
                         </div>
 
                         <div class="card-body">
-                            <h5 class="card-title">Presupuestos</h5>
-                            <p class="card-text">En esta sección podrás crear, editar y descargar tus presupuestos.</p>
+                            <h5 class="card-title">Nucleo ENII </h5>
+                            <p class="card-text">Espacio para la incubación y desarrollo de emprendimientos innovadores provenientes de la comunidad universitaria UCVista</p>
                         </div>
                     </a>
                 </div>
 
-                <!-- Invoices -->
-                <div class="card">
-                    <a href="{{ url('/invoices') }}">
-                        <div class="image-dashboard-card green">
-                            <i class="fas fa-file-invoice-dollar"></i>
-                        </div>
 
-                        <div class="card-body">
-                            <h5 class="card-title">Facturas</h5>
-                            <p class="card-text">En esta sección podrás crear, editar y descargar tus facturas.</p>
-                        </div>
-                    </a>
-                </div>
 
-                
 
             </div>
         </div>
 
-        
+
     </div>
 </div>
 @endsection

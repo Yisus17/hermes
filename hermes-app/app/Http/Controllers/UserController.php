@@ -6,6 +6,7 @@ use App\Models\Company;
 use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
 class UserController extends Controller
@@ -31,16 +32,19 @@ class UserController extends Controller
      */
     public function index()
     {
+
+        $currentCompanyId = auth::user()->company->id;
+        $currentUser = auth::user();
         $users = null;
-        switch (auth::user()->role_id) {
+        switch ($currentUser->role_id) {
             case ($this->USER_TYPE_ADMIN):
                 $users = User::all();
-                return view('users.list', compact('users'));
+               
+                return view('users.list', compact('users','currentUser'));
 
             case ($this->USER_TYPE_MODERATOR):
-                $users = User::where('role_id', $this->USER_TYPE_MODERATOR)->get();
-                return $users;
-                return view('users.list', compact('users'));
+                $users = User::where('company_id', $currentCompanyId)->get();
+                return view('users.list', compact('users', 'currentUser'));
 
             case ($this->USER_TYPE_SIMPLE_USER):
                 return redirect('home-simple-user');
@@ -54,7 +58,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.create');
     }
 
     /**
@@ -65,7 +69,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $currentCompanyId = auth::user()->company->id;
+        $user = new User($request->all());
+
+        $hashedPassword =  Hash::make($user->password);
+        $user->password = $hashedPassword;
+
+        //setting the company from the creator of this user
+        $user->company_id = $currentCompanyId;
+        $user->save();
+        $message = 'Usuario creado exitosamente';
+
+        return redirect('users')->with('message', $message);
     }
 
     /**
@@ -106,8 +121,8 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-       
-    
+
+
         $user->update($request->all());
         $user->company_id = $request->company_id;
         $user->role_id = $request->role_id;
