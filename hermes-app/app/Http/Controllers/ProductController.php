@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
+use App\Models\Product;
 
-class CompanyController extends Controller
+
+class ProductController extends Controller
 {
     private $USER_TYPE_ADMIN = "1";
     private $USER_TYPE_MODERATOR = "2";
     private $USER_TYPE_SIMPLE_USER = "3";
 
-    /**
+     /**
      * Create a new controller instance.
      *
      * @return void
@@ -21,14 +21,8 @@ class CompanyController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('companyonlymoderatoraccess', [
-            'only' => [
-                'show',
-                'edit'
-            ]
-        ]);
     }
-
+    
     /**
      * Display a listing of the resource.
      *
@@ -36,18 +30,19 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $companies = null;
-
-        switch (auth::user()->role_id) {
+        $currentCompanyId = auth::user()->company->id;
+        $currentUser = auth::user();
+        $products = null;
+        switch ($currentUser->role_id) {
             case ($this->USER_TYPE_ADMIN):
-                $companies = Company::all();
-                return view('companies.list', compact('companies'));
+                $products = Product::all();
+               
+                return view('products.list', compact('products','currentUser'));
 
-            case ($this->USER_TYPE_MODERATOR):
-                return redirect('home-moderator');
+            default:
+                $products = Product::where('company_id', $currentCompanyId)->get();
+                return view('products.list', compact('products', 'currentUser'));
 
-            case ($this->USER_TYPE_SIMPLE_USER):
-                return redirect('home-simple-user');
         }
     }
 
@@ -58,7 +53,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        return view('companies.create');
+        //
     }
 
     /**
@@ -69,16 +64,7 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        $company = new Company($request->all());
-        $company->logo = 'logo.png';
-
-        $company->save();
-
-        //$message = $id == null ? 'Contacto creado exitosamente' : 'Contacto editado exitosamente';
-
-        $message = 'Emprendedor creado exitosamente';
-
-        return redirect('companies')->with('message', $message);
+        //
     }
 
     /**
@@ -89,8 +75,8 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        $company = Company::findOrFail($id);
-        return view('companies.show', compact('company'));
+        $product = Product::findOrFail($id);
+        return view('products.show', compact('product'));
     }
 
     /**
@@ -101,8 +87,7 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
-        $company = Company::findOrFail($id);
-        return view('companies.edit', compact('company'));
+        //
     }
 
     /**
@@ -114,14 +99,7 @@ class CompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $company = Company::findOrFail($id);
-        $company->update($request->all());
-
-        $company->save();
-
-        $message = 'Emprendedor actualizado exitosamente';
-
-        return redirect('companies')->with('message', $message);
+        //
     }
 
     /**
@@ -132,8 +110,6 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        $companyToDelete = Company::findOrFail($id);
-        $companyToDelete->delete();
-        return redirect('companies')->with('message', 'Emprededor eliminado exitosamente');
+        //
     }
 }

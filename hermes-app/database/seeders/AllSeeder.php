@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use App\Models\Company;
+use App\Models\Product;
 use App\Models\Role;
 use Illuminate\Database\Seeder;
 use App\Models\User;
@@ -40,7 +42,7 @@ class AllSeeder extends Seeder
         ]);
 
         $companyDummy = Company::create([
-            'name' => 'DummyCompany',
+            'name' => 'PonchesDora',
             'logo' => '',
             'sector' => '',
         ]);
@@ -67,6 +69,46 @@ class AllSeeder extends Seeder
             'password' => Hash::make('astrid'),
             'company_id' => '2',
             'role_id' => '3'
+        ]);
+
+        $category1 = Category::create([
+            'name' => 'Alimentos y Bebidas',
+        ]);
+        $category2 = Category::create([
+            'name' => 'Servicios',
+        ]);
+
+        $product1 = Product::create([
+            'name' => 'Ponche Crema 1L',
+            'code' => '1234567890123',
+            'description' => 'Botella de ponche con un litro de contenido',
+            'stock' => 12,
+            'image' => '',
+            'price' => 100.00,
+            'category_id' => 1,
+            'company_id' => 2,
+        ]);
+
+        $product2 = Product::create([
+            'name' => 'Ponche Crema 2L',
+            'code' => '3210987654321',
+            'description' => 'Botella de ponche con 2 litros de contenido',
+            'stock' => 12,
+            'image' => '',
+            'price' => 190.00,
+            'category_id' => 1,
+            'company_id' => 2,
+        ]);
+
+        $product2 = Product::create([
+            'name' => 'Consultoría web',
+            'code' => '3210987654321',
+            'description' => 'Servicios profesionales web',
+            'stock' => 0,
+            'image' => '',
+            'price' => 1000.00,
+            'category_id' => 2,
+            'company_id' => 1,
         ]);
     }
 }

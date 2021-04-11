@@ -37,8 +37,8 @@
 							</tr>
                         </tbody>
                     </table>
-
-                    <a href="/companies" class="btn btn-secondary">Back</a>
+                    <a href="{{route('companies.edit', $company)}}" class="btn btn-primary">Editar</a>
+                    <a href="/companies" class="btn btn-secondary">Volver</a>
                 </div>
             </div>
         </div>

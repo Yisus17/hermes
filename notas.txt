@@ -16,25 +16,35 @@ comandos:
 	php artisan migrate:fresh --seed -->para meter migrar los seeds
 	
 	LIMPIAR CACHES DE LARAVEL
-	
-	php artisan cache:clear
-	php artisan route:clear
-	php artisan config:clear
-	php artisan view:clear
+		php artisan cache:clear
+		php artisan route:clear
+		php artisan config:clear
+		php artisan view:clear
 
 
 
 
 Pendientes:	
-	Completar datos de compañias
-	CRUD DE COMPAÑIA para usuarios moderadores
+	
+	CRUD DE PRODUCTOS: hecho las migraciones, el list y el show sin front, 
+		hay que restringir el acceso por compañia como se hizo en usuarios companyonlymoderatoraccess
+	CRUD DE BUDGETS
+	CRUD DE INVOICES
+	
 	Cargas de logos:
 		ver donde guardarlas
 		hacer bien el routing del storage
 		buscar algun bucket
 	hacer logging (usar trazas de mensajes como en los partials)
+	
 	pasar cosas a partials (mensajes de error o formularios, REFACTOR OPCIONAL)
 	
 Hecho:
 	Meter el resto de atributos en el formulario edit de usuario-->hecho
 	Gestion de compañias (principal)
+	About ->falta meter info, el routing esta bien
+	Diagrama ER 1.0
+	Dashboard admin
+	registrar usuarios desde list de admin 
+	crear usuario SEGUN la empresa del moderador 
+	CRUD DE COMPAÑIA para usuarios moderadores-->listo, falta tema de fotos

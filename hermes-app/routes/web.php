@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SimpleUserController;
 use App\Http\Controllers\ModeratorController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,5 +26,8 @@ Route::resource('/users', UserController::class);
 
 //Companies
 Route::resource('/companies', CompanyController::class);
+
+//Products
+Route::resource('/products', ProductController::class);
 
 Route::get('/about', [HomeController::class, 'about']);
