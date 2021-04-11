@@ -21,7 +21,16 @@ class CompanyController extends Controller
     public function __construct()
     {
 
+
         $this->middleware('auth');
+
+        
+        $this->middleware('companyonlymoderatoraccess', [
+            'only' => [
+                'show',
+                'edit'
+            ]
+        ]);
     }
 
     /**
@@ -128,7 +137,7 @@ class CompanyController extends Controller
     public function destroy($id)
     {
         $companyToDelete = Company::findOrFail($id);
-		$companyToDelete->delete();
-		return redirect('companies')->with('message', 'Emprededor eliminado exitosamente');
+        $companyToDelete->delete();
+        return redirect('companies')->with('message', 'Emprededor eliminado exitosamente');
     }
 }

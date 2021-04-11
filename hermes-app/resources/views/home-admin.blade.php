@@ -21,7 +21,7 @@
                     </a>
                 </div>
 
-                <!-- PRODUCTS -->
+                <!-- Companies -->
                 <div class="card">
                     <a href="{{ url('/companies') }}">
                         <div class="image-dashboard-card yellow">

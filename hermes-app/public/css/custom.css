@@ -164,6 +164,14 @@ textarea{
   background-color: #54ad68;
 }
 
+.image-dashboard-card.purple{
+  background-color: #A66FA6;
+}
+
+.image-dashboard-card.orange{
+  background-color: #FFA572;
+}
+
 .dashboard-cards .card > a,
 .dashboard-cards .card > a:hover{
   color: inherit;

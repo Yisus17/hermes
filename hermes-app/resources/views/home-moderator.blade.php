@@ -7,25 +7,12 @@
             <h2>Dashboard</h2>
             <div class="card-deck mt-4">
 
-                <!-- CLIENTS -->
-                <div class="card">
-                    <a href="{{ url('/users') }}">
-                        <div class="image-dashboard-card cyan">
-                            <i class="fas fa-user-friends"></i>
-                        </div>
-
-                        <div class="card-body">
-                            <h5 class="card-title">Usuarios</h5>
-                            <p class="card-text">Gestión de usuarios de tu emprendimiento</p>
-                        </div>
-                    </a>
-                </div>
 
                 <!-- PRODUCTS -->
                 <div class="card">
                     <a href="{{ url('/products') }}">
                         <div class="image-dashboard-card yellow">
-                            <i class="fas fa-headphones-alt"></i>
+                            <i class="fas fa-warehouse"></i>
                         </div>
 
                         <div class="card-body">
@@ -63,6 +50,52 @@
                     </a>
                 </div>
 
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="card-deck mt-4">
+                <!-- USERS -->
+                <div class="card">
+                    <a href="{{ url('/users') }}">
+                        <div class="image-dashboard-card cyan">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+
+                        <div class="card-body">
+                            <h5 class="card-title">Usuarios</h5>
+                            <p class="card-text">Gestión de usuarios de tu emprendimiento</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Contacts -->
+                <div class="card">
+                    <a href="{{ url('/contacts') }}">
+                        <div class="image-dashboard-card cyan">
+                            <i class="fas fa-address-book"></i>
+                        </div>
+
+                        <div class="card-body">
+                            <h5 class="card-title">Contactos</h5>
+                            <p class="card-text">Gestión de usuarios de tu emprendimiento</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- EMPRENDIMIENTOS -->
+                <div class="card">
+                    <a href="{{ url('/companies/'.$currentCompanyId) }}">
+                        <div class="image-dashboard-card cyan">
+                            <i class="fas fa-building"></i>
+                        </div>
+
+                        <div class="card-body">
+                            <h5 class="card-title">Mi Emprendimiento</h5>
+                            <p class="card-text">Gestión de usuarios de tu emprendimiento</p>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
 

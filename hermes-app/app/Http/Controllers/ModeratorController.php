@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Middleware\SoloModerator;
 
 class ModeratorController extends Controller
@@ -25,7 +26,8 @@ class ModeratorController extends Controller
      */
     public function index()
     {
-        return view('home-moderator');
+        $currentCompanyId = auth::user()->company->id;
+        return view('home-moderator', compact('currentCompanyId'));
     }
 
     /**
