@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
@@ -13,7 +14,7 @@ class ProductController extends Controller
     private $USER_TYPE_MODERATOR = "2";
     private $USER_TYPE_SIMPLE_USER = "3";
 
-     /**
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -28,7 +29,7 @@ class ProductController extends Controller
             ]
         ]);
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -42,13 +43,11 @@ class ProductController extends Controller
         switch ($currentUser->role_id) {
             case ($this->USER_TYPE_ADMIN):
                 $products = Product::all();
-               
-                return view('products.list', compact('products','currentUser'));
+                return view('products.list', compact('products', 'currentUser'));
 
             default:
                 $products = Product::where('company_id', $currentCompanyId)->get();
                 return view('products.list', compact('products', 'currentUser'));
-
         }
     }
 
@@ -59,7 +58,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('products.create', compact('categories'));
     }
 
     /**
@@ -70,7 +70,17 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = new Product($request->all());
+        $product->company_id = auth::user()->company->id;
+        $product->image = '';
+
+        $product->save();
+
+        //$message = $id == null ? 'Contacto creado exitosamente' : 'Contacto editado exitosamente';
+
+        $message = 'Producto creado exitosamente';
+
+        return redirect('products')->with('message', $message);
     }
 
     /**
@@ -93,7 +103,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product =  Product::findOrFail($id);
+        $categories = Category::all();
+        return view('products.edit', compact('product', 'categories'));
     }
 
     /**
@@ -105,7 +117,16 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product->update($request->all());
+        $product->company_id = auth::user()->company->id;
+        $product->image = '';
+
+        $product->save();
+
+        $message = 'Producto actualizado exitosamente';
+
+        return redirect('products')->with('message', $message);
     }
 
     /**
@@ -116,6 +137,8 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $productToDelete = Product::findOrFail($id);
+        $productToDelete->delete();
+        return redirect('products')->with('message', 'Producto ' . $productToDelete->name . ' eliminado.');
     }
 }

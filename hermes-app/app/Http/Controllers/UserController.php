@@ -120,9 +120,6 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
-
-
-
         $user->update($request->all());
         $user->company_id = $request->company_id;
         $user->role_id = $request->role_id;

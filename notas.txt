@@ -38,6 +38,9 @@ Pendientes:
 	hacer logging (usar trazas de mensajes como en los partials)
 	
 	pasar cosas a partials (mensajes de error o formularios, REFACTOR OPCIONAL)
+	TRADUCIR todo a español
+	Hacer un breadcrumb
+	validaciones de campos->QA
 	
 Hecho:
 	Meter el resto de atributos en el formulario edit de usuario-->hecho
@@ -48,3 +51,7 @@ Hecho:
 	registrar usuarios desde list de admin 
 	crear usuario SEGUN la empresa del moderador 
 	CRUD DE COMPAÑIA para usuarios moderadores-->listo, falta tema de fotos
+
+
+Posibles refactors:
+	- Sacar variables a constantes (por ejemplo los id de los roles en los controllers y mensajes)

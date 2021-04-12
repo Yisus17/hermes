@@ -20,14 +20,40 @@ Backlog:
 
     Módulo de E/S: /******REVISAR******/
         Moderador / Usuario simple: CRUD de ventas
-SPRINT:
 
-On Progress:
-    Modulo de Usuarios:
-            Admin: CRUD de usuarios (general) ->DONE
-            Moderador: CRUD de usuarios de empresa propia
-            Usuario simple: Config individual
 
-QA:
 
-DONE:
+
+
+CODIGO PARA FORMULARIO IMAGEN DE Productos
+<div class="form-group col-12">
+    <label>Imagen</label>
+
+    <div class="input-group mb-1">
+      <div class="input-group-prepend">
+        <label class="btn btn-outline-secondary">
+          Buscar <input id="product_image" placeholder="Selecciona un archivo" type="file" name="image" hidden>
+        </label>
+        
+      </div>
+      <input 
+        id="product_image_name"
+        name="product_image_name" 
+        type="text" 
+        class="form-control" 
+        placeholder="Selecciona un archivo"
+        value="{{isset($product) && $product->image_original_name ? $product->image_original_name : ''}}" 
+        readonly>
+      <div class="input-group-append">
+        <label id="reset_product_image" class="btn btn-outline-secondary">Eliminar</label>
+      </div>
+    </div>
+
+    <div class="image-area">
+      <p id="no_image_message" class="{{isset($product) && $product->image_name ? 'hidden' : ''}}">No hay imagen seleccionada</p>
+      <input 
+        type="image" 
+        class="{{isset($product) && $product->image_name ? '' : 'hidden'}}" 
+        id="preview_product_image" src="{{isset($product) && $product->image_name ? url('uploads/products/'.$product->image_name) : ''}}">
+    </div>
+  </div>
