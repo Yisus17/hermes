@@ -38,7 +38,7 @@
                             </tr>
                             
                             <tr>
-                                <th>Categoría/th>
+                                <th>Categoría</th>
                                 <td>{{$product->category->name}}</td>
                             </tr>
 

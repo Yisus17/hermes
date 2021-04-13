@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -29,5 +30,8 @@ Route::resource('/companies', CompanyController::class);
 
 //Products
 Route::resource('/products', ProductController::class);
+
+//Products
+Route::resource('/contacts', ContactController::class);
 
 Route::get('/about', [HomeController::class, 'about']);
