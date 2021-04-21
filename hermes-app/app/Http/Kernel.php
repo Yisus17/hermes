@@ -67,6 +67,7 @@ class Kernel extends HttpKernel
         'solosimpleuser' => \App\Http\Middleware\SoloSimpleUser::class,
         'registeronlybyadmin' => \App\Http\Middleware\RegisterOnlyByAdmin::class,
         'companyonlymoderatoraccess'=> \App\Http\Middleware\CompanyOnlyModeratorAccess::class,
-        'productonlyoncompany'=> \App\Http\Middleware\ProductOnlyOnCompany::class
+        'productonlyoncompany'=> \App\Http\Middleware\ProductOnlyOnCompany::class,
+        'contactaccess'=> \App\Http\Middleware\ContactAccess::class
     ];
 }

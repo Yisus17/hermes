@@ -4,9 +4,29 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ContactController extends Controller
 {
+    private $USER_TYPE_ADMIN = "1";
+    private $USER_TYPE_MODERATOR = "2";
+    private $USER_TYPE_SIMPLE_USER = "3";
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('contactaccess', [
+            'only' => [
+                'show',
+                'edit'
+            ]
+        ]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +34,18 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return Contact::all();
+        $currentCompanyId = auth::user()->company->id;
+        $currentUser = auth::user();
+
+        switch ($currentUser->role_id) {
+            case ($this->USER_TYPE_ADMIN):
+                $contacts =  Contact::all();
+                return view('contacts.list', compact('contacts'));
+
+            case ($this->USER_TYPE_MODERATOR || $this->USER_TYPE_SIMPLE_USER):
+                $contacts = Contact::where('company_id', $currentCompanyId)->get();
+                return view('contacts.list', compact('contacts'));
+        }
     }
 
     /**
@@ -46,7 +77,9 @@ class ContactController extends Controller
      */
     public function show($id)
     {
-        //
+        $contact = Contact::findOrFail($id);
+        return $contact;
+        return view('contacts.show', compact('contact'));
     }
 
     /**

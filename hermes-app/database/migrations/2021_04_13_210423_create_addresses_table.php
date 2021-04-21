@@ -20,6 +20,7 @@ class CreateAddressesTable extends Migration
             $table->String('state');
             $table->String('zipcode');
             $table->unsignedInteger('country_id');
+            $table->unsignedInteger('contact_id');
             $table->timestamps();
         });
     }

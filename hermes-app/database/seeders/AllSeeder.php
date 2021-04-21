@@ -162,52 +162,42 @@ class AllSeeder extends Seeder
             'municipality' => 'Palermo',
             'state' => 'CABA',
             'zipcode' => '00001',
-            'country_id' => 1
+            'country_id' => 1,
+            'contact_id' => 1
         ]);
         $address2 = Address::create([
             'city' => 'Bogota',
             'municipality' => 'Bogota',
             'state' => 'Bogota',
             'zipcode' => '00002',
-            'country_id' => 2
+            'country_id' => 2,
+            'contact_id' => 2
         ]);
         $address3 = Address::create([
             'city' => 'Santiago de Chile',
             'municipality' => 'San Miguel',
             'state' => 'Santiago de Chile',
             'zipcode' => '00003',
-            'country_id' => 3
+            'country_id' => 3,
+            'contact_id' => 3
         ]);
         $address4 = Address::create([
             'city' => 'Quito',
             'municipality' => 'San Jose',
             'state' => 'Quito',
             'zipcode' => '00004',
-            'country_id' => 4
+            'country_id' => 4,
+            'contact_id' => 4
         ]);
         $address5 = Address::create([
             'city' => 'CDMX',
             'municipality' => 'Capital',
             'state' => 'CDMX',
             'zipcode' => '00005',
-            'country_id' => 5
+            'country_id' => 5,
+            'contact_id' => 5
         ]);
 
-        $address6 = Address::create([
-            'city' => 'Caracas',
-            'municipality' => 'Libertador',
-            'state' => 'Distrito Capital',
-            'zipcode' => '00006',
-            'country_id' => 6
-        ]);
-
-        $address7 = Address::create([
-            'city' => 'San Antonio',
-            'municipality' => 'Los Salias',
-            'state' => 'Miranda',
-            'zipcode' => '00007',
-            'country_id' => 6
-        ]);
     }
 
     private function createContacts(){
@@ -217,7 +207,8 @@ class AllSeeder extends Seeder
             'last_name' => 'Sosa',
             'phone' => '5555555555',
             'email' => 'marianasosa@tecladosmariana.com',
-            'address_id' => 1
+            'address_id' => 1,
+            'company_id' => 1
         ]);
         $contact2 = Contact::create([
             'business_name' => 'Lamparas Dora',
@@ -225,7 +216,8 @@ class AllSeeder extends Seeder
             'last_name' => 'Arevalo',
             'phone' => '5555555555',
             'email' => 'doraarevalo@lamparasdora.com',
-            'address_id' => 2
+            'address_id' => 2,
+            'company_id' => 1
         ]);
         $contact3 = Contact::create([
             'business_name' => 'Calzados Loredana',
@@ -233,7 +225,8 @@ class AllSeeder extends Seeder
             'last_name' => 'Vassallo',
             'phone' => '5555555555',
             'email' => 'lorevassallo@calzadosloredana.com',
-            'address_id' => 3
+            'address_id' => 3,
+            'company_id' => 1
         ]);
         $contact4 = Contact::create([
             'business_name' => 'Banquetes Astrid',
@@ -241,7 +234,8 @@ class AllSeeder extends Seeder
             'last_name' => 'Vassallo',
             'phone' => '5555555555',
             'email' => 'astridvassallo@banquetesastrid.com',
-            'address_id' => 4
+            'address_id' => 4,
+            'company_id' => 2
         ]);
         $contact5 = Contact::create([
             'business_name' => 'Telas Julio',
@@ -249,7 +243,8 @@ class AllSeeder extends Seeder
             'last_name' => 'lovera',
             'phone' => '5555555555',
             'email' => 'juliolovera@telasjulio.com',
-            'address_id' => 6
+            'address_id' => 6,
+            'company_id' => 2
         ]);
     }
 }

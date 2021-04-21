@@ -10,7 +10,7 @@ class Contact extends Model
     use HasFactory;
 
     public function address(){
-      return $this->belongsTo(Address::class);
+      return $this->hasOne(Address::class); 
     }
   
 }

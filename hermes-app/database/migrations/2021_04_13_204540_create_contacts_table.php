@@ -21,6 +21,7 @@ class CreateContactsTable extends Migration
             $table->string('phone');
             $table->string('email');
             $table->unsignedInteger('address_id');
+            $table->unsignedInteger('company_id');
             $table->timestamps();
         });
     }
