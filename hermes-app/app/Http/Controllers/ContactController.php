@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use App\Models\Country;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -55,7 +56,8 @@ class ContactController extends Controller
      */
     public function create()
     {
-        //
+        $countries = Country::all();
+        return view('contacts.create',compact('countries'));
     }
 
     /**
@@ -66,7 +68,7 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request;
     }
 
     /**
@@ -111,8 +113,9 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id){
+        $contactToDelete = Contact::findOrFail($id);
+        $contactToDelete->delete();
+        return redirect('contacts')->with('message', 'Contacto eliminado exitosamente');
     }
 }
