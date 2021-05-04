@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use App\Models\Address;
 use App\Models\Country;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -57,7 +58,7 @@ class ContactController extends Controller
     public function create()
     {
         $countries = Country::all();
-        return view('contacts.create',compact('countries'));
+        return view('contacts.create', compact('countries'));
     }
 
     /**
@@ -68,7 +69,57 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        //Address mapping 
+        $address = new Address();
+        if ($request->has('city')) {
+            $address->city = $request->city;
+        }
+        if ($request->has('municipality')) {
+            $address->municipality = $request->municipality;
+        }
+        if ($request->has('state')) {
+            $address->state = $request->state;
+        }
+        if ($request->has('zipcode')) {
+            $address->zipcode = $request->zipcode;
+        }
+        if ($request->has('country_id')) {
+            $address->country_id = $request->country_id;
+        }
+
+        if ($address->save()) {
+            //Company
+            $currentCompanyId = auth::user()->company->id;
+
+            //Contact Mapping
+            $contact = new Contact();
+            if ($request->has('name')) {
+                $contact->name = $request->name;
+            }
+            if ($request->has('last_name')) {
+                $contact->last_name = $request->last_name;
+            }
+            if ($request->has('business_name')) {
+                $contact->business_name = $request->business_name;
+            }
+            if ($request->has('phone')) {
+                $contact->phone = $request->phone;
+            }
+            if ($request->has('email')) {
+                $contact->email = $request->email;
+            }
+
+            $contact->company_id = $currentCompanyId;
+            $contact->address_id = $address->id;
+            $contact->save();
+
+
+            $message = 'Contacto creado';
+        }else{
+            $message = 'Error creando contacto';
+        }
+
+        return redirect('contacts')->with('message', $message);
     }
 
     /**
@@ -80,8 +131,9 @@ class ContactController extends Controller
     public function show($id)
     {
         $contact = Contact::findOrFail($id);
-        return $contact;
-        return view('contacts.show', compact('contact'));
+        $address = Address::findOrFail($contact->address_id);
+        $country = Country::findOrFail($address->country_id);
+        return view('contacts.show', compact('contact', 'address', 'country'));
     }
 
     /**
@@ -92,7 +144,11 @@ class ContactController extends Controller
      */
     public function edit($id)
     {
-        //
+        $contact = Contact::findOrFail($id);
+        $countries = Country::all();
+        $address = Address::findOrFail($contact->address_id);
+
+        return view('contacts.edit', compact('contact', 'countries', 'address'));
     }
 
     /**
@@ -104,7 +160,51 @@ class ContactController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $contact = Contact::findOrFail($id);
+        //Address
+        if(isset($contact->address_id)){
+            $address = Address::findOrFail($contact->address_id);
+           
+            if ($request->has('city')) {
+                $address->city = $request->city;
+            }
+            if ($request->has('municipality')) {
+                $address->municipality = $request->municipality;
+            }
+            if ($request->has('state')) {
+                $address->state = $request->state;
+            }
+            if ($request->has('zipcode')) {
+                $address->zipcode = $request->zipcode;
+            }
+            if ($request->has('country_id')) {
+                $address->country_id = $request->country_id;
+            }
+
+            $address->update();
+        }
+
+
+        if ($request->has('name')) {
+            $contact->name = $request->name;
+        }
+        if ($request->has('last_name')) {
+            $contact->last_name = $request->last_name;
+        }
+        if ($request->has('business_name')) {
+            $contact->business_name = $request->business_name;
+        }
+        if ($request->has('phone')) {
+            $contact->phone = $request->phone;
+        }
+        if ($request->has('email')) {
+            $contact->email = $request->email;
+        }
+
+        $contact->update();
+
+        $message = 'Contacto editado';
+        return redirect('contacts')->with('message', $message);
     }
 
     /**
@@ -113,8 +213,15 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id){
+    public function destroy($id)
+    {
         $contactToDelete = Contact::findOrFail($id);
+
+        if (isset($contactToDelete->address_id)) {
+            $addressToDelete = Address::findOrFail($contactToDelete->address_id);
+            $addressToDelete->delete();
+        }
+
         $contactToDelete->delete();
         return redirect('contacts')->with('message', 'Contacto eliminado exitosamente');
     }

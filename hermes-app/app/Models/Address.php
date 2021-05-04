@@ -9,12 +9,17 @@ class Address extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+      'city',
+      'municipality',
+      'state',
+      'zipcode',
+      'country_id'
+  ];
+
     public function country(){
       return $this->belongsTo(Country::class);
     }
 
-    public function contact(){
-      return $this->belongsTo(Contact::class);
-    }
   
 }

@@ -25,9 +25,12 @@ comandos:
 
 
 Pendientes:	
+	JESUS LEE AQUI: 
+		Para cuando leas esto, sigue con contactos,
+		mejoraste el modelo (ve el diagrama), continua con las vistas del CRUD
+	CRUD DE CONTACTOS
 	CRUD DE BUDGETS
 	CRUD DE INVOICES
-	CRUD DE CONTACTOS
 	
 	Cargas de logos:
 		ver donde guardarlas
@@ -55,3 +58,6 @@ Posibles refactors:
 	- TRADUCIR todo a español
 	- Hacer un breadcrumb
 	- validaciones de campos->QA
+	- Paginacion
+	- Buscadores (producto, usuario, contactos)
+	- Ciudades, estados, municipios por base de datos

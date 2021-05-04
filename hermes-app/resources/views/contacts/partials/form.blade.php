@@ -62,7 +62,13 @@
         <select name="country_id" class="form-control selectpicker" data-live-search="true">
         <option value="" selected disabled>--Selecciona una opción--</option>
         @foreach($countries as $country)
-            <option value="{{ $country->id }}" {{ (isset($client) && $contact->id == $contact->country_id) || old('country_id') == $country->id ? 'selected' : '' }}>{{ $country->name }}</option>
+            <option value="{{ $country->id }}" 
+            {{ 
+                (isset($address) && $country->id == $address->country_id) ||
+                old('country_id') == $country->id ? 
+                    'selected' 
+                    : 
+                    '' }}>{{ $country->name }}</option>
         @endforeach
         </select>
     </div>
