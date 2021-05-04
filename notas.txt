@@ -26,9 +26,7 @@ comandos:
 
 Pendientes:	
 	JESUS LEE AQUI: 
-		Para cuando leas esto, sigue con contactos,
-		mejoraste el modelo (ve el diagrama), continua con las vistas del CRUD
-	CRUD DE CONTACTOS
+		Entrale a los budgets, seria bueno que antes hablaras con mercedes
 	CRUD DE BUDGETS
 	CRUD DE INVOICES
 	
@@ -37,10 +35,12 @@ Pendientes:
 		hacer bien el routing del storage
 		buscar algun bucket
 	hacer logging (usar trazas de mensajes como en los partials)
-	
+	TESTING DE TODO
+	Vista de usuario simple
 	
 	
 Hecho:
+	CRUD DE CONTACTOS
 	Meter el resto de atributos en el formulario edit de usuario-->hecho
 	Gestion de compañias (principal)
 	About ->falta meter info, el routing esta bien
