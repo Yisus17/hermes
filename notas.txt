@@ -61,3 +61,13 @@ Posibles refactors:
 	- Paginacion
 	- Buscadores (producto, usuario, contactos)
 	- Ciudades, estados, municipios por base de datos
+
+
+
+
+
+
+DOCUMENTO:
+	FUENTES:
+		CIfras inflacion banco de venezuela
+		http://www.bcv.org.ve/estadisticas/consumidor
