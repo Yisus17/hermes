@@ -12,5 +12,10 @@ class Contact extends Model
     public function address(){
       return $this->hasOne(Address::class); 
     }
+
+    //Uno a muchos
+    public function budgets(){
+      return $this->hasMany(Budget::class);
+    }
   
 }

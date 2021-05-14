@@ -29,4 +29,9 @@ class Product extends Model
   {
     return $this->belongsTo(Company::class);
   }
+
+  //many to many
+  public function budgets(){
+    return $this->belongsToMany(Budget::class);
+  }
 }

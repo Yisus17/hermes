@@ -26,7 +26,9 @@ comandos:
 
 Pendientes:	
 	JESUS LEE AQUI: 
-		Entrale a los budgets, seria bueno que antes hablaras con mercedes
+		Ya tienes casi toda la bd montada, los budgets tienes casi todo lo referente a BD montado, revisa los fills de los modelos
+		En budgets ya puedes empezar a hacer el controlador y las vistas iniciales, tienes un par de datos de prueba
+		deja el pdf al final, pero antes de las fotos
 	CRUD DE BUDGETS
 	CRUD DE INVOICES
 	

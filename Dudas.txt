@@ -1,0 +1,7 @@
+Comentar sobre el cap1:
+    Arquitectura
+    darle un repaso
+
+Preguntar sobre metodologias de desarrollo
+
+- Comentar sobre el diagrama ER 

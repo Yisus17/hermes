@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Address;
+use App\Models\Budget;
 use App\Models\Category;
 use App\Models\Company;
 use App\Models\Contact;
@@ -31,6 +32,7 @@ class AllSeeder extends Seeder
         $this->createCountries();
         $this->createAddress();
         $this->createContacts();
+        $this->createBudgets();
     }
 
     private function createRoles()
@@ -816,4 +818,16 @@ class AllSeeder extends Seeder
             'company_id' => 2
         ]);
     }
+
+    private function createBudgets(){
+        $budget1 = Budget::create([
+            'description' => 'Presupuesto de prueba 1',
+            'contact_id' => 1
+        ]);
+        
+        $budget1->products()->attach([1,2]);
+        $budget1->products()->attach(3);
+    }
+
+    
 }
