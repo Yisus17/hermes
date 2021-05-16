@@ -32,6 +32,7 @@ class Product extends Model
 
   //many to many
   public function budgets(){
-    return $this->belongsToMany(Budget::class);
+    return $this->belongsToMany(Budget::class)->withPivot( 
+			'total_price', 'quantity');
   }
 }

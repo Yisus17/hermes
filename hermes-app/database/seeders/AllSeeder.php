@@ -73,7 +73,7 @@ class AllSeeder extends Seeder
     {
         $userAdmin = User::create([
             'name' => 'Admin',
-            'email' => 'admin@hermesucv.com',
+            'email' => 'admin@enii.com',
             'password' => Hash::make('admin'),
             'company_id' => '1',
             'role_id' => '1'
@@ -81,7 +81,7 @@ class AllSeeder extends Seeder
 
         $userModerator = User::create([
             'name' => 'Jesus',
-            'email' => 'jesus@hermesucv.com',
+            'email' => 'jesus@enii.com',
             'password' => Hash::make('jesus'),
             'company_id' => '1',
             'role_id' => '2'
@@ -89,7 +89,7 @@ class AllSeeder extends Seeder
 
         $userSimple = User::create([
             'name' => 'Astrid',
-            'email' => 'astrid@hermesucv.com',
+            'email' => 'astrid@enii.com',
             'password' => Hash::make('astrid'),
             'company_id' => '2',
             'role_id' => '3'
@@ -819,15 +819,30 @@ class AllSeeder extends Seeder
         ]);
     }
 
-    private function createBudgets(){
-        $budget1 = Budget::create([
-            'description' => 'Presupuesto de prueba 1',
-            'contact_id' => 1
-        ]);
-        
-        $budget1->products()->attach([1,2]);
-        $budget1->products()->attach(3);
-    }
+    private function createBudgets()
+    {
 
-    
+        $budget1 = Budget::create([
+            'validity' => 7,
+            'description' => 'Presupuesto de prueba 1',
+            'contact_id' => 1,
+            'payment_conditions' => 'Pago fraccionado',
+            'payment_method' => 'Transferencia',
+            'notes' => 'Paguese a la orden de Jesús Arévalo'
+        ]);
+
+        $budget2 = Budget::create([
+            'validity' => 10,
+            'description' => 'Presupuesto de prueba 2',
+            'contact_id' => 4,
+            'payment_conditions' => 'Pago fraccionado',
+            'payment_method' => 'Transferencia',
+            'notes' => 'Paguese a la orden de Alberto Sandoval'
+        ]);
+
+
+        $budget1->products()->attach(1, ['quantity' => 2, 'total_price' => 5.0]);
+        $budget1->products()->attach(1, ['quantity' => 2, 'total_price' => 5.0]);
+        $budget2->products()->attach(2, ['quantity' => 3, 'total_price' => 5.0]);
+    }
 }

@@ -15,7 +15,11 @@ class CreateBudgetsTable extends Migration
     {
         Schema::create('budgets', function (Blueprint $table) {
             $table->id();
+            $table->decimal('validity');
             $table->string('description');
+            $table->string('payment_conditions');
+            $table->string('payment_method');
+            $table->string('notes');
             $table->timestamps();
         });
     }

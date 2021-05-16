@@ -55,7 +55,7 @@ Hecho:
 
 
 Posibles refactors:
-	- Sacar variables a constantes (por ejemplo los id de los roles en los controllers y mensajes)
+	- Sacar variables a constantes (por ejemplo los id de los roles en los controllers y mensajes)->mirate los helpers de meche
 	- pasar cosas a partials (mensajes de error o formularios, REFACTOR OPCIONAL)
 	- TRADUCIR todo a español
 	- Hacer un breadcrumb

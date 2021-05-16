@@ -17,5 +17,9 @@ class Contact extends Model
     public function budgets(){
       return $this->hasMany(Budget::class);
     }
+
+    public function company(){
+      return $this->belongsTo(Company::class);
+    }
   
 }

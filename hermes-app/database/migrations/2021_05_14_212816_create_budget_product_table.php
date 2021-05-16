@@ -20,6 +20,10 @@ class CreateBudgetProductTable extends Migration
 
             $table->foreign('budget_id')->references('id')->on('budgets')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            
+            $table->integer('quantity');
+            $table->float('total_price');
+
             $table->timestamps();
         });
     }

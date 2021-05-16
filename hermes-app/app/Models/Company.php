@@ -19,4 +19,9 @@ class Company extends Model
         'sector',
         'logo'
     ];
+
+    public function contacts()
+    {
+        return $this->hasMany(Contact::class);
+    }
 }
