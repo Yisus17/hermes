@@ -36,7 +36,6 @@ class BudgetController extends Controller
      */
     public function index()
     {
-        $currentCompanyId = auth::user()->company->id;
         $currentUser = auth::user();
 
         switch ($currentUser->role_id) {
@@ -48,14 +47,9 @@ class BudgetController extends Controller
 
                 //ESTO ME RETORNA LOS BUDGETS DE LA COMPAÑIA EN ESPECIFICO
                 $budgets = Budget::with(['contact' => function ($query) {
-                    $query->where('company_id', '=', 1);
+                    $query->where('company_id', '=', auth::user()->company->id);
                 }])->get()->where('contact', '<>', null);
-                return $budgets;
-
-
-
-
-
+                
 
                 return view('budgets.list', compact('budgets', 'currentUser'));
         }

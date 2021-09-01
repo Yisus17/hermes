@@ -8,17 +8,13 @@
 
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <span>Detalle Contacto</span>
+                    <span>Detalle Contacto ({{$contact->id}})</span>
                 </div>
                 <div class="card-body">
                     <div class="row">
                     <div class="col-md-6">
                         <table class="table table-bordered">
                             <tbody>
-                                <tr>
-                                    <th>ID</th>
-                                    <td>{{$contact->id}}</td>
-                                </tr>
                                 <tr>
                                     <th>Nombre</th>
                                     <td>{{$contact->name}}</td>
@@ -42,6 +38,16 @@
                                 <tr>
                                     <th>Correo</th>
                                     <td>{{$contact->email}}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>RIF</th>
+                                    <td>{{$contact->rif}}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Tipo</th>
+                                    <td>{{$contact->contactType->name}}</td>
                                 </tr>
 
                             </tbody>

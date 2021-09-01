@@ -1,0 +1,25 @@
+- Recuperar Password
+
+- Revisar edicion de contacto
+
+- Agregar RIF a los datos de contacto
+    definir por tipo de contacto (V,E,J,G,C) V225540664-9
+
+-Definir una tabla con los tipos de IVA para productos
+    Un flag para el producto si tiene o no IVA
+    relacionar producto con la tabla de tipos de IVA
+
+-Valor por defecto en la validez de un reporte 
+en la def de un contacto
+
+-Cambiar nombre "dashboard"
+-Revisar que reportes puede tener el administrador 
+    *Datos de cantidad de productos que se mueven en la plataforma
+    *Rendimiento financiero por facturacion de emprendedores
+
+-Revisar permisologia en cambio de productos para user simple
+
+- Contacto: son independientes, una persona contacto,
+ la identificamos por su cedula
+
+-Revisar bien como guardar un contacto y empresa

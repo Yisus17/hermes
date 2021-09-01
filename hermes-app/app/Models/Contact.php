@@ -9,6 +9,11 @@ class Contact extends Model
 {
     use HasFactory;
 
+    public function contactType()
+    {
+      return $this->belongsTo(ContactType::class);
+    }
+
     public function address(){
       return $this->hasOne(Address::class); 
     }

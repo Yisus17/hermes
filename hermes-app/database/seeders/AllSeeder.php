@@ -10,8 +10,9 @@ use App\Models\Contact;
 use App\Models\Country;
 use App\Models\Product;
 use App\Models\Role;
-use Illuminate\Database\Seeder;
 use App\Models\User;
+use App\Models\ContactType;
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
 class AllSeeder extends Seeder
@@ -31,6 +32,7 @@ class AllSeeder extends Seeder
         $this->createProducts();
         $this->createCountries();
         $this->createAddress();
+        $this->createContactTypes();
         $this->createContacts();
         $this->createBudgets();
     }
@@ -777,8 +779,10 @@ class AllSeeder extends Seeder
             'name' => 'Mariana',
             'last_name' => 'Sosa',
             'phone' => '5555555555',
+            'rif' => 'v22540664-9',
             'email' => 'marianasosa@tecladosmariana.com',
             'address_id' => 1,
+            'contact_type_id' => 2,
             'company_id' => 1
         ]);
         $contact2 = Contact::create([
@@ -786,8 +790,10 @@ class AllSeeder extends Seeder
             'name' => 'Dora',
             'last_name' => 'Arevalo',
             'phone' => '5555555555',
+            'rif' => 'v22540664-9',
             'email' => 'doraarevalo@lamparasdora.com',
             'address_id' => 2,
+            'contact_type_id' => 1,
             'company_id' => 1
         ]);
         $contact3 = Contact::create([
@@ -795,8 +801,10 @@ class AllSeeder extends Seeder
             'name' => 'Loredana',
             'last_name' => 'Vassallo',
             'phone' => '5555555555',
+            'rif' => 'v22540664-9',
             'email' => 'lorevassallo@calzadosloredana.com',
             'address_id' => 3,
+            'contact_type_id' => 2,
             'company_id' => 1
         ]);
         $contact4 = Contact::create([
@@ -804,8 +812,10 @@ class AllSeeder extends Seeder
             'name' => 'Astrid',
             'last_name' => 'Vassallo',
             'phone' => '5555555555',
+            'rif' => 'v22540664-9',
             'email' => 'astridvassallo@banquetesastrid.com',
             'address_id' => 4,
+            'contact_type_id' => 1,
             'company_id' => 2
         ]);
         $contact5 = Contact::create([
@@ -813,8 +823,10 @@ class AllSeeder extends Seeder
             'name' => 'Julio',
             'last_name' => 'lovera',
             'phone' => '5555555555',
+            'rif' => 'v22540664-9',
             'email' => 'juliolovera@telasjulio.com',
             'address_id' => 6,
+            'contact_type_id' => 2,
             'company_id' => 2
         ]);
     }
@@ -844,5 +856,15 @@ class AllSeeder extends Seeder
         $budget1->products()->attach(1, ['quantity' => 2, 'total_price' => 5.0]);
         $budget1->products()->attach(1, ['quantity' => 2, 'total_price' => 5.0]);
         $budget2->products()->attach(2, ['quantity' => 3, 'total_price' => 5.0]);
+    }
+
+    private function createContactTypes()
+    {
+        $contactType1 = ContactType::create([
+            'name' => 'Proveedor',
+        ]);
+        $category2 = ContactType::create([
+            'name' => 'Cliente',
+        ]);
     }
 }

@@ -69,6 +69,7 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
+        
         //Address mapping 
         $address = new Address();
         if ($request->has('city')) {
@@ -107,6 +108,13 @@ class ContactController extends Controller
             }
             if ($request->has('email')) {
                 $contact->email = $request->email;
+            }
+            if ($request->has('rif')) {
+                $contact->rif = $request->rif;
+            }
+            
+            if ($request->has('contact_type_id')) {
+                $contact->contact_type_id = $request->contact_type_id; 
             }
 
             $contact->company_id = $currentCompanyId;

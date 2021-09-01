@@ -4,7 +4,7 @@
     </div>
 
 
-    <div class="form-group  col-12 col-sm-4">
+    <div class="form-group  col-12 col-sm-6">
         <label for="name"><span class="required-field">*</span> Nombre</label>
         <input 
         type="text" 
@@ -14,7 +14,7 @@
         required/>
     </div>
 
-    <div class="form-group  col-12 col-sm-4">
+    <div class="form-group  col-12 col-sm-6">
         <label for="last_name"><span class="required-field">*</span> Apellido</label>
         <input 
         type="text" 
@@ -25,7 +25,7 @@
     </div>
 
     
-    <div class="form-group col-12 col-sm-4">
+    <div class="form-group col-12 col-sm-6">
         <label for="phone"><span class="required-field">*</span>Teléfono</label>
         <input 
         type="text" 
@@ -45,7 +45,18 @@
         required/>
     </div>
 
-    <div class="form-group col-12 col-sm-6">
+    <div class="form-group col-12 col-sm-4">
+        <label for="rif"><span class="required-field">*</span>RIF</label>
+        <input 
+        type="text" 
+        name="rif" 
+        class="form-control" 
+        value="{{isset($contact) ? $contact->rif : old('rif')}}" 
+        required/>
+    </div>
+
+    
+    <div class="form-group col-12 col-sm-4">
         <label for="business_name"> Empresa</label>
         <input 
         type="text" 
@@ -54,6 +65,16 @@
         value="{{isset($contact) ? $contact->business_name : old('business_name')}}" 
         required/>
     </div>
+
+    <div class="form-group col-12 col-sm-4">
+        <label for="contact_type_id"> Tipo de Cliente</label>
+        <select name="contact_type_id" id="contact_type_id" class="form-control">
+            <option value="1">Proveedor</option>
+            <option value="2">Cliente</option>
+        </select>
+
+    </div>
+
     
     <div class="col-12"><hr></div>
 
