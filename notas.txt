@@ -26,9 +26,12 @@ comandos:
 
 Pendientes:	
 	JESUS LEE AQUI: 
-		Ya tienes casi toda la bd montada, los budgets tienes casi todo lo referente a BD montado, revisa los fills de los modelos
-		En budgets ya puedes empezar a hacer el controlador y las vistas iniciales, tienes un par de datos de prueba
-		deja el pdf al final, pero antes de las fotos
+		
+		La estructura de budget esta a medias, pero resolviste el query por compañia, continua con los demas fucntions del controller, 
+		ademas arregla el bug de cuando te logeas como moderador, puedes cambiar el usuario de compañia
+
+		(Cambiaste en la app de onyx en una rama aparte, añadiste la tabla de roles y su relacion con usuarios, sigue con las vistas de cada role)
+	
 	CRUD DE BUDGETS
 	CRUD DE INVOICES
 	
@@ -36,9 +39,10 @@ Pendientes:
 		ver donde guardarlas
 		hacer bien el routing del storage
 		buscar algun bucket
-	hacer logging (usar trazas de mensajes como en los partials)
-	TESTING DE TODO
-	Vista de usuario simple
+	Hacer que la pagina de inicio sea el login
+	
+	
+	
 	
 	
 Hecho:
